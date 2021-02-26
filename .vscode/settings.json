@@ -1,0 +1,19 @@
+{
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "eslint.alwaysShowStatus": true,
+  "eslint.validate": ["javascript", "vue"],
+  "vetur.validation.style": false,
+  "vetur.validation.template": false,
+  "vetur.format.defaultFormatter.js": "none",
+  "eslint.format.enable": true,
+  "editor.formatOnSave": true,
+  "css.validate": false,
+  "less.validate": false,
+  "editor.detectIndentation": false,
+  "vetur.format.enable": true,
+  "[vue]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "vetur.experimental.templateInterpolationService": true
+}
