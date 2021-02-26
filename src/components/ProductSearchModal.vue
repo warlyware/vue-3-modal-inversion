@@ -1,5 +1,9 @@
 <template>
-  <SearchModal url="/products" />
+  <search-modal
+    url="/products"
+    title="Product Search Modal"
+    placeholder="Search for a product..."
+  />
 </template>
 
 <script>

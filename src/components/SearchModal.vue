@@ -4,7 +4,7 @@
       <!-- Header -->
       <div class="w-full flex justify-between align-center">
         <h2 class="text-2xl text-gray-900 font-medium">
-          Product Search
+          {{ title }}
         </h2>
         <button class="btn close-btn">
           ✕
@@ -16,18 +16,18 @@
         v-model="searchValue"
         class="input"
         type="text"
-        placeholder="Search for a product..."
+        :placeholder="placeholder"
       >
 
       <div
-        v-if="products.length === 0"
+        v-if="items.length === 0"
         class="py-8 italic text-gray-700 text-lg text-center"
       >
         Loading...
       </div>
       <ProductList
         v-else
-        :products="products"
+        :products="items"
       />
 
       <!-- Footer -->
@@ -57,20 +57,28 @@ export default {
     url: {
       type: String,
       required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    placeholder: {
+      type: String,
+      default: 'Search something...'
     }
   },
 
   setup(props) {
-    const products = ref([])
+    const items = ref([])
     const searchValue = ref('')
 
     watchEffect(async () => {
       const data = await fetch(props.url, searchValue.value)
-      products.value = data
+      items.value = data
     })
 
     return {
-      products,
+      items,
       searchValue
     }
   }
