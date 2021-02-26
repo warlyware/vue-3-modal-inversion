@@ -1,6 +1,6 @@
 <template>
   <div class="gradient h-full p-8">
-    <ProductSearch url="/products" />
+    <ProductSearch />
   </div>
   <!-- <div class="flex flex-col items-center">
     <img
