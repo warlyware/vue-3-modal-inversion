@@ -1,5 +1,8 @@
 <template>
-  <div class="flex flex-col items-center">
+  <div class="gradient h-full p-8">
+    <ProductSearch url="/products" />
+  </div>
+  <!-- <div class="flex flex-col items-center">
     <img
       class="w-42 h-42 mb-4"
       alt="Vue logo"
@@ -37,11 +40,16 @@
         5
       </button>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
+import ProductSearch from './components/ProductSearch.vue'
+
 export default {
+  components: {
+    ProductSearch
+  },
   setup() {
     const openModal = modalName => {
       console.log(modalName)
@@ -51,14 +59,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
