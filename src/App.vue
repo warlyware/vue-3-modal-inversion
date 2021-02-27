@@ -1,11 +1,20 @@
 <template>
   <div class="p-8">
     <product-search-modal />
-    <button @click="openModal('product-search')" />
+    <p
+      v-for="num in 50"
+      :key="num"
+    >
+      stuff
+    </p>
+    <button @click="openModal('product-search')">
+      dont click
+    </button>
   </div>
 </template>
 
 <script>
+import useModal from './utils/use-modal'
 import ProductSearchModal from './components/ProductSearchModal.vue'
 
 export default {
@@ -13,9 +22,7 @@ export default {
     ProductSearchModal
   },
   setup() {
-    const openModal = modalName => {
-      console.log(modalName)
-    }
+    const { openModal } = useModal()
 
     return { openModal }
   }
