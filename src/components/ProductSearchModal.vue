@@ -1,12 +1,11 @@
 <template>
   <search-modal
+    v-slot="{ items }"
     url="/products"
     title="Product Search Modal"
     placeholder="Search for a product..."
   >
-    <template #default="{ items }">
-      <product-list :products="items" />
-    </template>
+    <product-list :products="items" />
   </search-modal>
 </template>
 
