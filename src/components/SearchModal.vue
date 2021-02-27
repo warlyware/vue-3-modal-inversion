@@ -50,12 +50,9 @@ import {
   watchEffect,
   ref
 } from 'vue'
-import ProductList from './ProductList.vue'
 import fetch from '../utils/fetch-util'
 
 export default {
-  components: { ProductList },
-
   props: {
     url: {
       type: String,
