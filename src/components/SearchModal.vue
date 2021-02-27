@@ -25,10 +25,13 @@
       >
         Loading...
       </div>
-      <ProductList
+
+      <slot
         v-else
-        :products="items"
-      />
+        :items="items"
+      >
+        DEFINE SLOT CONTENT HERE
+      </slot>
 
       <!-- Footer -->
       <div
