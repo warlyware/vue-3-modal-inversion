@@ -1,6 +1,7 @@
 <template>
-  <div class="gradient h-full p-8">
+  <div class="p-8">
     <product-search-modal />
+    <button @click="openModal('product-search')" />
   </div>
 </template>
 

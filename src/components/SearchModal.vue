@@ -6,7 +6,10 @@
         <h2 class="text-2xl text-gray-900 font-medium">
           {{ title }}
         </h2>
-        <button class="btn close-btn">
+        <button
+          class="btn close-btn"
+          @click="$emit('close')"
+        >
           ✕
         </button>
       </div>
@@ -67,6 +70,7 @@ export default {
       default: 'Search something...'
     }
   },
+  emits: [ 'close' ],
 
   setup(props) {
     const items = ref([])
