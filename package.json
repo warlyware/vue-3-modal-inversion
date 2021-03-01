@@ -7,6 +7,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "body-scroll-lock": "^3.1.5",
     "vue": "^3.0.5"
   },
   "devDependencies": {

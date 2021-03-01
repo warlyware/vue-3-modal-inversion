@@ -1,6 +1,6 @@
 <template>
   <div
-    class="modal"
+    class="bg-white rounded-lg shadow-xl py-6 px-8 scroll-target"
     @click.stop
   >
     <!-- Header -->
@@ -33,6 +33,7 @@
 
     <slot
       v-else
+      class=""
       :items="items"
     >
       DEFINE SLOT CONTENT HERE
@@ -93,3 +94,19 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.scroll-target {
+  padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 80vw;
+    width: 500px;
+    height: 30vh;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 2px solid #ff1a35;
+    overflow-y: auto;
+}
+</style>

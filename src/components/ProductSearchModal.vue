@@ -2,12 +2,11 @@
   <teleport to="#modal-container">
     <template v-if="showModal">
       <div
-        class="fixed h-full w-full bg-red-400"
+        class="fixed top-0 bottom-0 right-0 left-0 bg-gray-400"
         @click="closeModal"
       >
         <search-modal
           v-slot="{ items }"
-          class="absolute modal-center"
           url="/products"
           title="Product Search Modal"
           placeholder="Search for a product..."
@@ -53,11 +52,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.modal-center {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-}
-</style>
