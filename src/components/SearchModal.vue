@@ -1,10 +1,10 @@
 <template>
   <div
-    class="bg-white rounded-lg shadow-xl py-6 px-8 scroll-target"
+    class="bg-white rounded-lg shadow-xl px-8 scroll-target overflow-y-auto absolute"
     @click.stop
   >
     <!-- Header -->
-    <div class="w-full flex justify-between align-center">
+    <div class="w-full flex justify-between align-center sticky top-0 bg-white py-4">
       <h2 class="text-2xl text-gray-900 font-medium">
         {{ title }}
       </h2>
@@ -97,16 +97,11 @@ export default {
 
 <style scoped>
 .scroll-target {
-  padding: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    max-width: 80vw;
-    width: 500px;
-    height: 30vh;
-    transform: translate(-50%, -50%);
-    background: white;
-    border: 2px solid #ff1a35;
-    overflow-y: auto;
+  top: 50%;
+  left: 50%;
+  max-width: 80vw;
+  max-width: 500px;
+  max-height: 80vh;
+  transform: translate(-50%, -50%);
 }
 </style>
