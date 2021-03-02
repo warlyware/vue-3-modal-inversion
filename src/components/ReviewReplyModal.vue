@@ -1,30 +1,24 @@
 <template>
-  <teleport to="#modal-container">
-    <div
-      v-if="showModal"
-      class="fixed top-0 bottom-0 right-0 left-0"
-    >
-      <ww-modal
-        title="Review Reply"
-      >
-        <form>
-          <textarea
-            id="story"
-            v-model="formData.replyText"
-            name="story"
-            rows="5"
-            cols="33"
-          />
-          <button @click="save">
-            Save
-          </button>
-        </form>
-        <template #footer>
-          FOOTER STUFF
-        </template>
-      </ww-modal>
-    </div>
-  </teleport>
+  <ww-modal
+    v-if="showModal"
+    title="Review Reply"
+  >
+    <form>
+      <textarea
+        id="story"
+        v-model="formData.replyText"
+        name="story"
+        rows="5"
+        cols="33"
+      />
+      <button @click="save">
+        Save
+      </button>
+    </form>
+    <template #footer>
+      FOOTER STUFF
+    </template>
+  </ww-modal>
 </template>
 
 <script>
