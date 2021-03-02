@@ -17,28 +17,7 @@
     </div>
 
     <div class="scroll-target overflow-y-auto px-8">
-      <!-- Search -->
-      <input
-        v-model="searchValue"
-        class="input"
-        type="text"
-        :placeholder="placeholder"
-      >
-
-      <div
-        v-if="items.length === 0"
-        class="py-8 italic text-gray-700 text-lg text-center"
-      >
-        Loading...
-      </div>
-
-      <slot
-        v-else
-        class=""
-        :items="items"
-      >
-        DEFINE SLOT CONTENT HERE
-      </slot>
+      <slot :items="items" />
     </div>
 
     <!-- Footer -->
@@ -65,17 +44,9 @@ import fetch from '../utils/fetch-util'
 
 export default {
   props: {
-    url: {
-      type: String,
-      required: true
-    },
     title: {
       type: String,
       required: true
-    },
-    placeholder: {
-      type: String,
-      default: 'Search something...'
     }
   },
   setup(props) {

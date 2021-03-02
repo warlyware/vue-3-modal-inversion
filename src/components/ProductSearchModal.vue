@@ -6,14 +6,12 @@
         @click="closeModal"
       >
         <modal-overlay />
-        <search-modal
+        <ww-modal
           v-slot="{ items }"
-          url="/products"
           title="Product Search Modal"
-          placeholder="Search for a product..."
         >
           <product-list :products="items" />
-        </search-modal>
+        </ww-modal>
       </div>
     </template>
   </teleport>
@@ -28,13 +26,13 @@ import {
 
 import useModal from '../utils/use-modal'
 import ProductList from './ProductList.vue'
-import SearchModal from './SearchModal.vue'
+import WwModal from './WwModal.vue'
 import ModalOverlay from './helpers/ModalOverlay.vue'
 
 export default {
   components: {
     ProductList,
-    SearchModal,
+    WwModal,
     ModalOverlay
   },
   setup() {
