@@ -20,7 +20,7 @@ import {
   nextTick
 } from 'vue'
 
-import useModal from '../utils/use-modal'
+import useModal from '@/utils/use-modal'
 
 export default {
   setup() {

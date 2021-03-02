@@ -35,9 +35,9 @@
 </template>
 
 <script>
-import useModal from '../utils/use-modal'
+import useModal from '@/utils/use-modal'
 
-import ModalOverlay from './helpers/ModalOverlay.vue'
+import ModalOverlay from '@/components/helpers/ModalOverlay.vue'
 
 export default {
   components: {
@@ -49,7 +49,7 @@ export default {
       required: true
     }
   },
-  setup(props) {
+  setup() {
     const { closeModal } = useModal()
 
     return {

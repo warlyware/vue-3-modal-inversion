@@ -16,12 +16,12 @@ import {
   toRefs
 } from 'vue'
 
-import { REVIEW_REPLY } from '../constants/modals/names'
+import { REVIEW_REPLY } from '@/constants/modals/names'
 
-import ReviewReplyModalForm from './ReviewReplyModalForm.vue'
+import ReviewReplyModalForm from '@/components/ReviewReplyModalForm.vue'
 
-import useModal from '../utils/use-modal'
-import WwModal from './WwModal.vue'
+import useModal from '@/utils/use-modal'
+import WwModal from '@/components/WwModal.vue'
 
 export default {
   components: {

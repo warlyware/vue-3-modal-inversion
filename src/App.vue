@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import { REVIEW_REPLY } from './constants/modals/names'
+import { REVIEW_REPLY } from '@/constants/modals/names'
 
-import useModal from './utils/use-modal'
-import ReviewReplyModal from './components/ReviewReplyModal.vue'
+import useModal from '@/utils/use-modal'
+import ReviewReplyModal from '@/components/ReviewReplyModal.vue'
 import {
   reactive,
   toRefs,
