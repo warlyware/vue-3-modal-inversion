@@ -3,12 +3,26 @@
     v-if="showModal"
     title="Photo Caption"
   >
-    Photo caption modal!
+    <form>
+      <textarea
+        id="caption"
+        v-model="formData.photoCaption"
+        name="caption"
+        rows="5"
+        cols="33"
+      />
+    </form>
+    <template #footer>
+      <button @click="save">
+        Save
+      </button>
+    </template>
   </ww-modal>
 </template>
 
 <script>
 import {
+  nextTick,
   reactive,
   toRefs
 } from 'vue'
@@ -23,16 +37,30 @@ export default {
     WwModal
   },
   setup() {
-    const { setupModal } = useModal()
+    const { setupModal, closeModal } = useModal()
 
     const state = reactive({
-      showModal: false
+      showModal: false,
+      formData: {
+        photoCaption: ''
+      }
     })
+
+    const clearForm = () => {
+      state.formData.photoCaption = ''
+    }
+
+    const save = async () => {
+      const { formData } = toRefs(state)
+      closeModal(formData.value)
+      await nextTick()
+      clearForm()
+    }
 
     state.showModal = setupModal(PHOTO_CAPTION)
 
     return {
-      ...toRefs(state)
+      ...toRefs(state), save
     }
   }
 }

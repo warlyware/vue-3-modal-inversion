@@ -19,13 +19,13 @@
           </button>
         </div>
 
-        <div class="scroll-target overflow-y-auto px-8 py-4">
+        <div class="scroll-target overflow-y-auto px-8">
           <slot />
         </div>
 
         <div
-          v-if="$slots.footer"
-          class="flex px-8 py-4"
+          class="flex px-8"
+          :class="$slots.footer ? 'py-4' : 'py-1'"
         >
           <slot name="footer" />
         </div>

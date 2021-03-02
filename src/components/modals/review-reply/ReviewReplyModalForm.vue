@@ -1,9 +1,9 @@
 <template>
   <form>
     <textarea
-      id="story"
+      id="reply"
       v-model="formData.replyText"
-      name="story"
+      name="reply"
       rows="5"
       cols="33"
     />

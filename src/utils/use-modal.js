@@ -28,7 +28,7 @@ export default function useModal() {
     return showModal
   }
 
-  const openModal = async ({ name, id }) => {
+  const openModal = async ({ name, id = null }) => {
     state.activeModal = name
     state.modalCallerId = id
     await nextTick()
