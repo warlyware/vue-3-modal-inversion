@@ -1,4 +1,5 @@
 import {
+  computed,
   nextTick,
   reactive,
   toRefs
@@ -29,7 +30,6 @@ export default function useModal() {
   }
 
   const closeModal = async data => {
-    console.log('pass back data to caller', data)
     state.modalData = data
     state.activeModal = null
     await nextTick()
@@ -37,7 +37,17 @@ export default function useModal() {
     enableBodyScroll(modalContainer)
   }
 
+  const isEvent = data => {
+    return data.value?.target
+  }
+
+  const modalHasData = computed(() => {
+    const { activeModal, modalData } = toRefs(state)
+    if (isEvent(modalData)) { return false }
+    return !!(!activeModal?.value && modalData?.value)
+  })
+
   return {
-    openModal, closeModal, ...toRefs(state)
+    openModal, closeModal, ...toRefs(state), modalHasData
   }
 }

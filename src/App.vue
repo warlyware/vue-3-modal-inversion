@@ -39,7 +39,7 @@ export default {
   },
   setup() {
     const {
-      activeModal, openModal, modalData, modalCallerId
+      activeModal, openModal, modalData, modalCallerId, modalHasData
     } = useModal()
 
     const state = reactive({
@@ -61,9 +61,8 @@ export default {
       }
     }
 
-    watch(activeModal, modalName => {
-      if (!modalName) {
-        console.log(modalData.value, modalCallerId.value)
+    watch(activeModal, () => {
+      if (modalHasData.value) {
         handleModalData(modalData.value, modalCallerId.value)
       }
     })

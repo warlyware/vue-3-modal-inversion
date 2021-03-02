@@ -29,6 +29,7 @@
 
 <script>
 import {
+  nextTick,
   reactive,
   toRefs,
   watch
@@ -53,10 +54,16 @@ export default {
       }
     })
 
-    const save = () => {
+    const clearForm = () => {
+      state.formData.replyText = ''
+    }
+
+    const save = async () => {
       console.log('saveData')
       const { formData } = toRefs(state)
       closeModal(formData.value)
+      await nextTick()
+      clearForm()
     }
 
     watch(activeModal, modalName => {
