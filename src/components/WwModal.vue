@@ -1,9 +1,9 @@
 <template>
+  <modal-overlay />
   <div
     class="bg-white rounded-lg shadow-xl absolute modal-boundaries overflow-hidden"
     @click.stop
   >
-    <!-- Header -->
     <div class="w-full flex justify-between align-center sticky top-0 bg-white py-4 px-8">
       <h2 class="text-2xl text-gray-900 font-medium">
         {{ title }}
@@ -16,20 +16,15 @@
       </button>
     </div>
 
-    <div class="scroll-target overflow-y-auto px-8">
+    <div class="scroll-target overflow-y-auto px-8 py-4">
       <slot :items="items" />
     </div>
 
-    <!-- Footer -->
     <div
-      class="flex justify-end bg-gray-200 -mx-8 px-8 -mb-6 py-4 rounded-b"
+      v-if="$slots.footer"
+      class="flex px-8 py-4"
     >
-      <button
-        class="btn primary-btn"
-        @click="closeModal"
-      >
-        Cancel
-      </button>
+      <slot name="footer" />
     </div>
   </div>
 </template>
@@ -41,8 +36,12 @@ import {
 } from 'vue'
 import useModal from '../utils/use-modal'
 import fetch from '../utils/fetch-util'
+import ModalOverlay from './helpers/ModalOverlay.vue'
 
 export default {
+  components: {
+    ModalOverlay
+  },
   props: {
     title: {
       type: String,
@@ -68,10 +67,11 @@ export default {
 }
 </script>
 
-<style var scoped>
+<style scoped>
 .modal-boundaries {
   top: 50%;
   left: 50%;
+  min-width: 400px;
   max-width: 80vw;
   max-width: 500px;
   max-height: 80vh;
