@@ -24,8 +24,8 @@
         </div>
 
         <div
-          class="flex px-8"
-          :class="$slots.footer ? 'py-4' : 'py-1'"
+          class="flex px-8 py-4"
+          :class="$slots.footer ? 'py-4' : 'py-2.5'"
         >
           <slot name="footer" />
         </div>

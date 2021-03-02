@@ -2,6 +2,10 @@
   <div class="p-8">
     <review-reply-modal />
     <photo-caption-modal />
+    <simple-modal title="So simple!">
+      Contents of simple modal
+    </simple-modal>
+
     <div>
       Review Reply 0 Data: {{ dataZero }}
     </div>
@@ -29,18 +33,26 @@
     >
       Photo Caption
     </button>
+    <button
+      class="border px-1 bg-gray-300 rounded"
+      @click="openModal({ name: SIMPLE_MODAL })"
+    >
+      Simple Modal
+    </button>
   </div>
 </template>
 
 <script>
 import {
   PHOTO_CAPTION,
-  REVIEW_REPLY
+  REVIEW_REPLY,
+  SIMPLE_MODAL
 } from '@/constants/modals/names'
 
 import useModal from '@/utils/use-modal'
 import PhotoCaptionModal from '@/components/modals/photo-caption/PhotoCaptionModal.vue'
 import ReviewReplyModal from '@/components/modals/review-reply/ReviewReplyModal.vue'
+import SimpleModal from '@/components/modals/SimpleModal.vue'
 import {
   reactive,
   toRefs,
@@ -50,7 +62,8 @@ import {
 export default {
   components: {
     PhotoCaptionModal,
-    ReviewReplyModal
+    ReviewReplyModal,
+    SimpleModal
   },
   setup() {
     const {
@@ -116,7 +129,7 @@ export default {
     })
 
     return {
-      openModal, PHOTO_CAPTION, REVIEW_REPLY, ...toRefs(state)
+      openModal, PHOTO_CAPTION, REVIEW_REPLY, SIMPLE_MODAL, ...toRefs(state)
     }
   }
 }
