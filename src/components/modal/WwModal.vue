@@ -37,7 +37,7 @@
 <script>
 import useModal from '@/utils/use-modal'
 
-import ModalOverlay from '@/components/helpers/ModalOverlay.vue'
+import ModalOverlay from '@/components/modal/helpers/ModalOverlay.vue'
 
 export default {
   components: {

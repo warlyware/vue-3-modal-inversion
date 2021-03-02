@@ -21,7 +21,7 @@ import { REVIEW_REPLY } from '@/constants/modals/names'
 import ReviewReplyModalForm from '@/components/ReviewReplyModalForm.vue'
 
 import useModal from '@/utils/use-modal'
-import WwModal from '@/components/WwModal.vue'
+import WwModal from '@/components/modal/WwModal.vue'
 
 export default {
   components: {
