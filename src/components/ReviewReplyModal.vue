@@ -59,7 +59,6 @@ export default {
     }
 
     const save = async () => {
-      console.log('saveData')
       const { formData } = toRefs(state)
       closeModal(formData.value)
       await nextTick()
