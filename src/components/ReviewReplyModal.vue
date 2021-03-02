@@ -7,7 +7,18 @@
       <ww-modal
         title="Review Reply"
       >
-        Main template stuff
+        <form>
+          <textarea
+            id="story"
+            v-model="formData.replyText"
+            name="story"
+            rows="5"
+            cols="33"
+          />
+          <button @click="save">
+            Save
+          </button>
+        </form>
         <template #footer>
           FOOTER STUFF
         </template>
@@ -36,15 +47,24 @@ export default {
     const { activeModal, closeModal } = useModal()
 
     const state = reactive({
-      showModal: false
+      showModal: false,
+      formData: {
+        replyText: ''
+      }
     })
+
+    const save = () => {
+      console.log('saveData')
+      const { formData } = toRefs(state)
+      closeModal(formData.value)
+    }
 
     watch(activeModal, modalName => {
       state.showModal = modalName === REVIEW_REPLY
     })
 
     return {
-      ...toRefs(state), activeModal, closeModal
+      ...toRefs(state), activeModal, closeModal, save
     }
   }
 }

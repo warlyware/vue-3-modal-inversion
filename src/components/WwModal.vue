@@ -9,7 +9,6 @@
         {{ title }}
       </h2>
       <button
-        class="btn close-btn"
         @click="closeModal"
       >
         ✕
@@ -17,7 +16,7 @@
     </div>
 
     <div class="scroll-target overflow-y-auto px-8 py-4">
-      <slot :items="items" />
+      <slot />
     </div>
 
     <div
@@ -30,12 +29,8 @@
 </template>
 
 <script>
-import {
-  watchEffect,
-  ref
-} from 'vue'
 import useModal from '../utils/use-modal'
-import fetch from '../utils/fetch-util'
+
 import ModalOverlay from './helpers/ModalOverlay.vue'
 
 export default {
@@ -50,17 +45,8 @@ export default {
   },
   setup(props) {
     const { closeModal } = useModal()
-    const items = ref([])
-    const searchValue = ref('')
-
-    watchEffect(async () => {
-      const data = await fetch(props.url, searchValue.value)
-      items.value = data
-    })
 
     return {
-      items,
-      searchValue,
       closeModal
     }
   }

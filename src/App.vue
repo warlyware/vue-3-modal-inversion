@@ -1,14 +1,23 @@
 <template>
   <div class="p-8">
     <review-reply-modal />
-    <p
-      v-for="num in 50"
-      :key="num"
+    <div>
+      0 Data: {{ dataZero }}
+    </div>
+    <button
+      class="border px-1 bg-gray-300 rounded"
+      @click="openModal({ name: REVIEW_REPLY, id: 0 })"
     >
-      stuff
-    </p>
-    <button @click="openModal(REVIEW_REPLY)">
-      dont click
+      dont click 0
+    </button>
+    <div>
+      1 Data: {{ dataOne }}
+    </div>
+    <button
+      class="border px-1 bg-gray-300 rounded"
+      @click="openModal({ name: REVIEW_REPLY, id: 1 })"
+    >
+      dont click 1
     </button>
   </div>
 </template>
@@ -18,15 +27,50 @@ import { REVIEW_REPLY } from './constants/modals/names'
 
 import useModal from './utils/use-modal'
 import ReviewReplyModal from './components/ReviewReplyModal.vue'
+import {
+  reactive,
+  toRefs,
+  watch
+} from 'vue'
 
 export default {
   components: {
     ReviewReplyModal
   },
   setup() {
-    const { openModal } = useModal()
+    const {
+      activeModal, openModal, modalData, modalCallerId
+    } = useModal()
 
-    return { openModal, REVIEW_REPLY }
+    const state = reactive({
+      dataZero: '',
+      dataOne: ''
+    })
+
+    const handleModalData = (data, callerId) => {
+      switch (callerId) {
+      case 0:
+        state.dataZero = data.replyText
+        break
+      case 1:
+        state.dataOne = data.replyText
+        break
+      default:
+        console.error('INVALID CALLERID', callerId)
+        break
+      }
+    }
+
+    watch(activeModal, modalName => {
+      if (!modalName) {
+        console.log(modalData.value, modalCallerId.value)
+        handleModalData(modalData.value, modalCallerId.value)
+      }
+    })
+
+    return {
+      openModal, REVIEW_REPLY, ...toRefs(state)
+    }
   }
 }
 </script>
