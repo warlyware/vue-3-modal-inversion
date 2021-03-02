@@ -26,7 +26,7 @@
 import { REVIEW_REPLY } from '@/constants/modals/names'
 
 import useModal from '@/utils/use-modal'
-import ReviewReplyModal from '@/components/ReviewReplyModal.vue'
+import ReviewReplyModal from '@/components/modals/review-reply/ReviewReplyModal.vue'
 import {
   reactive,
   toRefs,

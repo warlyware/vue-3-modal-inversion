@@ -1,12 +1,9 @@
 <template>
   <ww-modal
     v-if="showModal"
-    title="Review Reply"
+    title="Photo Caption"
   >
-    <review-reply-modal-form />
-    <template #footer>
-      FOOTER STUFF
-    </template>
+    Photo caption modal!
   </ww-modal>
 </template>
 
@@ -16,16 +13,13 @@ import {
   toRefs
 } from 'vue'
 
-import { REVIEW_REPLY } from '@/constants/modals/names'
-
-import ReviewReplyModalForm from '@/components/ReviewReplyModalForm.vue'
+import { PHOTO_CAPTION } from '@/constants/modals/names'
 
 import useModal from '@/utils/use-modal'
-import WwModal from '@/components/modal/WwModal.vue'
+import WwModal from '@/components/UI/WwModal.vue'
 
 export default {
   components: {
-    ReviewReplyModalForm,
     WwModal
   },
   setup() {
@@ -35,7 +29,7 @@ export default {
       showModal: false
     })
 
-    state.showModal = setupModal(REVIEW_REPLY)
+    state.showModal = setupModal(PHOTO_CAPTION)
 
     return {
       ...toRefs(state)
