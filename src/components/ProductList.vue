@@ -1,6 +1,6 @@
 <template>
   <!-- Items -->
-  <div class="my-4 -mx-8">
+  <div class="my-4">
     <div
       v-for="{
         name,
@@ -9,7 +9,7 @@
         price,
       } in products"
       :key="name"
-      class="item space-x-6"
+      class="flex space-x-6 mb-4"
     >
       <img
         class="rounded-full w-24 h-24 object-cover border border-gray-500 shadow-md"
