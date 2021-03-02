@@ -14,16 +14,22 @@ const state = reactive({
 })
 
 export default function useModal() {
+  const getModalContainerElement = () => {
+    return document.getElementById('modal-container')
+  }
+
   const openModal = async modalName => {
     state.activeModal = modalName
     await nextTick()
-    const modalEl = document.getElementsById('modal-container')
-    debugger
-    disableBodyScroll(modalEl)
+    const modalContainer = getModalContainerElement()
+    disableBodyScroll(modalContainer)
   }
 
-  const closeModal = () => {
+  const closeModal = async () => {
     state.activeModal = null
+    await nextTick()
+    const modalContainer = getModalContainerElement()
+    enableBodyScroll(modalContainer)
   }
 
   return {

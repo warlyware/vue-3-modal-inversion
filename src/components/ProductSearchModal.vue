@@ -2,9 +2,10 @@
   <teleport to="#modal-container">
     <template v-if="showModal">
       <div
-        class="fixed top-0 bottom-0 right-0 left-0 bg-gray-400"
+        class="fixed top-0 bottom-0 right-0 left-0"
         @click="closeModal"
       >
+        <modal-overlay />
         <search-modal
           v-slot="{ items }"
           url="/products"
@@ -24,14 +25,17 @@ import {
   toRefs,
   watch
 } from 'vue'
+
 import useModal from '../utils/use-modal'
 import ProductList from './ProductList.vue'
 import SearchModal from './SearchModal.vue'
+import ModalOverlay from './helpers/ModalOverlay.vue'
 
 export default {
   components: {
     ProductList,
-    SearchModal
+    SearchModal,
+    ModalOverlay
   },
   setup() {
     const { activeModal, closeModal } = useModal()
