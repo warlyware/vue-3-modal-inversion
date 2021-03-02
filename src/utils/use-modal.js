@@ -2,7 +2,8 @@ import {
   computed,
   nextTick,
   reactive,
-  toRefs
+  toRefs,
+  watch
 } from 'vue'
 
 import {
@@ -19,6 +20,13 @@ const state = reactive({
 export default function useModal() {
   const getModalContainerElement = () => {
     return document.getElementById('modal-container')
+  }
+
+  const setupModal = name => {
+    const showModal = computed(() => {
+      return state.activeModal === name
+    })
+    return showModal
   }
 
   const openModal = async ({ name, id }) => {
@@ -48,6 +56,6 @@ export default function useModal() {
   })
 
   return {
-    openModal, closeModal, ...toRefs(state), modalHasData
+    openModal, closeModal, ...toRefs(state), modalHasData, setupModal
   }
 }

@@ -31,8 +31,7 @@
 import {
   nextTick,
   reactive,
-  toRefs,
-  watch
+  toRefs
 } from 'vue'
 
 import { REVIEW_REPLY } from '../constants/modals/names'
@@ -45,7 +44,9 @@ export default {
     WwModal
   },
   setup() {
-    const { activeModal, closeModal } = useModal()
+    const {
+      activeModal, closeModal, setupModal
+    } = useModal()
 
     const state = reactive({
       showModal: false,
@@ -65,9 +66,7 @@ export default {
       clearForm()
     }
 
-    watch(activeModal, modalName => {
-      state.showModal = modalName === REVIEW_REPLY
-    })
+    state.showModal = setupModal(REVIEW_REPLY)
 
     return {
       ...toRefs(state), activeModal, closeModal, save
