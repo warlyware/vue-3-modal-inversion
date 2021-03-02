@@ -1,10 +1,10 @@
 <template>
   <div
-    class="bg-white rounded-lg shadow-xl px-8 scroll-target overflow-y-auto absolute"
+    class="bg-white rounded-lg shadow-xl absolute modal-boundaries overflow-hidden"
     @click.stop
   >
     <!-- Header -->
-    <div class="w-full flex justify-between align-center sticky top-0 bg-white py-4">
+    <div class="w-full flex justify-between align-center sticky top-0 bg-white py-4 px-8">
       <h2 class="text-2xl text-gray-900 font-medium">
         {{ title }}
       </h2>
@@ -16,28 +16,30 @@
       </button>
     </div>
 
-    <!-- Search -->
-    <input
-      v-model="searchValue"
-      class="input"
-      type="text"
-      :placeholder="placeholder"
-    >
+    <div class="scroll-target overflow-y-auto px-8">
+      <!-- Search -->
+      <input
+        v-model="searchValue"
+        class="input"
+        type="text"
+        :placeholder="placeholder"
+      >
 
-    <div
-      v-if="items.length === 0"
-      class="py-8 italic text-gray-700 text-lg text-center"
-    >
-      Loading...
+      <div
+        v-if="items.length === 0"
+        class="py-8 italic text-gray-700 text-lg text-center"
+      >
+        Loading...
+      </div>
+
+      <slot
+        v-else
+        class=""
+        :items="items"
+      >
+        DEFINE SLOT CONTENT HERE
+      </slot>
     </div>
-
-    <slot
-      v-else
-      class=""
-      :items="items"
-    >
-      DEFINE SLOT CONTENT HERE
-    </slot>
 
     <!-- Footer -->
     <div
@@ -95,13 +97,16 @@ export default {
 }
 </script>
 
-<style scoped>
-.scroll-target {
+<style var scoped>
+.modal-boundaries {
   top: 50%;
   left: 50%;
   max-width: 80vw;
   max-width: 500px;
   max-height: 80vh;
   transform: translate(-50%, -50%);
+}
+.scroll-target {
+  max-height: calc(80vh - 64px); /* Modal height - modal header height */
 }
 </style>
